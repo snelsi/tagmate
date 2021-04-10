@@ -1,5 +1,4 @@
-const dotenv = require("dotenv");
-dotenv.config();
+require('dotenv').config(); 
 
 const { prefix } = require("./config.json");
 const { reactToMessage } = require("./react.js");
@@ -29,4 +28,4 @@ client.on("message", (message) => {
   }
 });
 
-client.login(process.env.TOKEN);
+client.login();
