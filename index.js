@@ -20,7 +20,7 @@ client.on("message", (message) => {
   }
   // React to random messages
   else {
-    const roll = getRandomNumber();
+    const roll = getRandomNumber(0, 10);
 
     if (roll === 0) {
       reactToMessage(message);
