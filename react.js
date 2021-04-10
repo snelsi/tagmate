@@ -7,7 +7,7 @@ const pepePunch1Emoji = "808653159425507359";
 const pepePunch2Emoji = "808653159769178152";
 
 const reactToMessage = (message) => {
-  const roll = getRandomNumber(1, 10);
+  const roll = getRandomNumber(1, 16);
 
   if (roll === 1) {
     message
@@ -86,6 +86,14 @@ const reactToMessage = (message) => {
     message
       .react(pepePunch1Emoji)
       .then(() => message.react(pepePunch2Emoji))
+      .catch(() => console.error("One of the emojis failed to react."));
+  } else if (roll === 14) {
+    message
+      .react("💩")
+      .catch(() => console.error("One of the emojis failed to react."));
+  } else if (roll === 15) {
+    message
+      .react("♿️")
       .catch(() => console.error("One of the emojis failed to react."));
   }
 };
