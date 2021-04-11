@@ -5,9 +5,12 @@ const monkaChristEmoji = "570861366777348108";
 const areYouKiddingMeEmoji = "808650707204702249";
 const pepePunch1Emoji = "808653159425507359";
 const pepePunch2Emoji = "808653159769178152";
+const max1 = "818779291651145760";
+const max2 = "818779369165553674";
+const max3 = "818779410513133568";
 
 const reactToMessage = (message) => {
-  const roll = getRandomNumber(1, 16);
+  const roll = getRandomNumber(1, 18);
 
   if (roll === 1) {
     message
@@ -95,6 +98,21 @@ const reactToMessage = (message) => {
     message
       .react("♿️")
       .catch(() => console.error("[15] One of the emojis failed to react."));
+  } else if (roll === 16) {
+    message
+      .react("🇨")
+      .then(() => message.react("🇷"))
+      .then(() => message.react("🇮"))
+      .then(() => message.react("🇳"))
+      .then(() => message.react("🇬"))
+      .then(() => message.react("🇪"))
+      .catch(() => console.error("[16] One of the emojis failed to react."));
+  } else if (roll === 17) {
+    message
+      .react(max1)
+      .then(() => message.react(max2))
+      .then(() => message.react(max3))
+      .catch(() => console.error("[17] One of the emojis failed to react."));
   }
 };
 
