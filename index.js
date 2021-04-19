@@ -5,6 +5,8 @@ const { reactToMessage } = require("./react.js");
 const { getRandomNumber } = require("./helpers.js");
 const { getStalkerJoke } = require("./jokes.js");
 const { getEmojiText } = require("./emojiText.js");
+const { startNew2048Game } = require("./2048.js");
+const { chelTi } = require("./chel.js");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -29,6 +31,10 @@ client.on("message", (message) => {
           message.channel.send(emojiText);
         }
       });
+    } else if (command === "2048") {
+      startNew2048Game(message);
+    } else if (command === "chel") {
+      chelTi(message, client);
     }
   }
   // React to random messages
