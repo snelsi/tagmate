@@ -6,6 +6,7 @@ const { getRandomNumber } = require("./helpers.js");
 const { getStalkerJoke } = require("./jokes.js");
 const { getEmojiText } = require("./emojiText.js");
 const { startNew2048Game } = require("./2048.js");
+const { getMeme } = require("./meme.js");
 const { chelTi } = require("./chel.js");
 
 const Discord = require("discord.js");
@@ -35,6 +36,8 @@ client.on("message", (message) => {
       startNew2048Game(message);
     } else if (command === "chel") {
       chelTi(message, client);
+    } else if (command === "meme") {
+      getMeme(message, ...args);
     }
   }
   // React to random messages

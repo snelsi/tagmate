@@ -11,7 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "request": "^2.81.0"
   },
   "engines": {
     "node": "14.x",
