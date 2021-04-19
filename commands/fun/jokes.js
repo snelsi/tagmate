@@ -1,4 +1,4 @@
-const { getRandomNumber } = require("./helpers.js");
+const { getRandomNumber } = require("../../helpers.js");
 
 const jokes = [
   `Говорит новый русский знакомому сталкеру:
@@ -693,5 +693,9 @@ const getStalkerJoke = (index) =>
   jokes[index ?? getRandomNumber(0, jokes.length - 1)];
 
 module.exports = {
-  getStalkerJoke,
+  name: "joke",
+  description: "Get random stalker joke",
+  execute(message, args) {
+    message.reply(`\n${getStalkerJoke(args[0])}`);
+  },
 };

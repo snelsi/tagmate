@@ -46,5 +46,17 @@ const getEmojiText = (text = "") =>
     .trim();
 
 module.exports = {
-  getEmojiText,
+  name: "say",
+  description: "Transforms text into emojis",
+  args: true,
+  usage: "Hello World!",
+  execute(message, args) {
+    const lines = args.join(" ").split("\n");
+    lines.forEach((line) => {
+      const emojiText = getEmojiText(line);
+      if (emojiText) {
+        message.channel.send(emojiText);
+      }
+    });
+  },
 };
