@@ -8,6 +8,7 @@ const { getEmojiText } = require("./emojiText.js");
 const { startNew2048Game } = require("./2048.js");
 const { getMeme } = require("./meme.js");
 const { chelTi } = require("./chel.js");
+const { roll } = require("./roll.js");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -38,6 +39,8 @@ client.on("message", (message) => {
       chelTi(message, client);
     } else if (command === "meme") {
       getMeme(message, ...args);
+    } else if (command === "roll") {
+      roll(message);
     }
   }
   // React to random messages
