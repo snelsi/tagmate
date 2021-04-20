@@ -31,12 +31,20 @@ module.exports = {
       // Handle multiple memes
       if (body.memes) {
         return message.reply("", {
-          files: body.memes.map((meme) => meme.url),
+          files: body.memes.map((meme, i) =>
+            meme.nsfw
+              ? { attachment: meme.url, name: `SPOILER_FILE_${i}.jpg` }
+              : meme.url
+          ),
         });
       }
       // Handle single meme
       return message.reply("", {
-        files: [body.url],
+        files: [
+          body.nsfw
+            ? { attachment: body.url, name: `SPOILER_FILE.jpg` }
+            : body.url,
+        ],
       });
     });
   },
