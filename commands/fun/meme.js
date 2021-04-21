@@ -6,6 +6,7 @@ module.exports = {
   name: "meme",
   description: "Get random reddit meme",
   usage: "[subreddit count]",
+  aliases: ["pic"],
   execute(message, args) {
     const [subReddit, count] = args;
 
