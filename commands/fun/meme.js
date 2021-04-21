@@ -28,28 +28,33 @@ module.exports = {
     return request(api, { json: true }, (err, res, body) => {
       if (err || !body) return message.reply(err || "An error occurred, sorry");
 
-      // Handle multiple memes
-      if (body.memes) {
-        const memes = body.memes.filter((meme) => meme?.url);
-        if (memes) {
+      try {
+        // Handle multiple memes
+        if (body.memes) {
+          const memes = body.memes.filter((meme) => meme?.url).splice(0, 10);
+          if (memes.length > 0) {
+            return message.reply("", {
+              files: memes.map((meme, i) =>
+                meme.nsfw
+                  ? { attachment: meme.url, name: `SPOILER_FILE_${i}.jpg` }
+                  : meme.url
+              ),
+            });
+          }
+        }
+        if (body.url) {
+          // Handle single meme
           return message.reply("", {
-            files: memes.map((meme, i) =>
-              meme.nsfw
-                ? { attachment: meme.url, name: `SPOILER_FILE_${i}.jpg` }
-                : meme.url
-            ),
+            files: [
+              body.nsfw
+                ? { attachment: body.url, name: `SPOILER_FILE.jpg` }
+                : body.url,
+            ],
           });
         }
-      }
-      if (body.url) {
-        // Handle single meme
-        return message.reply("", {
-          files: [
-            body.nsfw
-              ? { attachment: body.url, name: `SPOILER_FILE.jpg` }
-              : body.url,
-          ],
-        });
+      } catch (e) {
+        console.error(e);
+        message.reply("An error occurred, sorry");
       }
     });
   },
