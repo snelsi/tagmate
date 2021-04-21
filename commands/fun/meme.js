@@ -25,27 +25,31 @@ module.exports = {
     }
 
     return request(api, { json: true }, (err, res, body) => {
-      if (err) {
-        return message.reply(err);
-      }
+      if (err || !body) return message.reply(err || "An error occurred, sorry");
+
       // Handle multiple memes
       if (body.memes) {
+        const memes = body.memes.filter((meme) => meme?.url);
+        if (memes) {
+          return message.reply("", {
+            files: memes.map((meme, i) =>
+              meme.nsfw
+                ? { attachment: meme.url, name: `SPOILER_FILE_${i}.jpg` }
+                : meme.url
+            ),
+          });
+        }
+      }
+      if (body.url) {
+        // Handle single meme
         return message.reply("", {
-          files: body.memes.map((meme, i) =>
-            meme.nsfw
-              ? { attachment: meme.url, name: `SPOILER_FILE_${i}.jpg` }
-              : meme.url
-          ),
+          files: [
+            body.nsfw
+              ? { attachment: body.url, name: `SPOILER_FILE.jpg` }
+              : body.url,
+          ],
         });
       }
-      // Handle single meme
-      return message.reply("", {
-        files: [
-          body.nsfw
-            ? { attachment: body.url, name: `SPOILER_FILE.jpg` }
-            : body.url,
-        ],
-      });
     });
   },
 };
