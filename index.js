@@ -26,8 +26,21 @@ client.once("ready", () => {
   console.log("Bot is ready! Beep boop! 🤖");
 });
 
+const djanId = "320644298267688960";
+const pepePunch1Emoji = "808653159425507359";
+const pepePunch2Emoji = "808653159769178152";
+const vodkaEmoji = "618454419129892865";
+
 client.on("message", (message) => {
   if (message.author.bot) return;
+
+  if (message.author.id === djanId) {
+    message
+      .react(pepePunch1Emoji)
+      .then(() => message.react(pepePunch2Emoji))
+      .then(() => message.react(vodkaEmoji))
+      .catch(() => console.error("[13] One of the emojis failed to react."));
+  }
 
   if (message.content.startsWith(prefix)) {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
