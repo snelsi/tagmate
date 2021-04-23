@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon .",
+    "start": "node .",
+    "dev": "nodemon .",
     "lint": "eslint ."
   },
   "author": "snelsi",
