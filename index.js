@@ -1,9 +1,9 @@
 require("dotenv").config();
 
 const fs = require("fs");
+const getRandomNumber = require("lodash/random");
 const { prefix } = require("./config.json");
 const { reactToMessage } = require("./react.js");
-const { getRandomNumber } = require("./helpers.js");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();

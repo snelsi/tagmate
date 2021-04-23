@@ -12,7 +12,8 @@
   "dependencies": {
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
-    "request": "^2.81.0"
+    "lodash": "^4.17.21",
+    "request": "^2.88.2"
   },
   "engines": {
     "node": "14.x",

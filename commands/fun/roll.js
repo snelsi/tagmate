@@ -1,4 +1,4 @@
-const { getRandomNumber } = require("../../helpers.js");
+const getRandomNumber = require("lodash/random");
 
 module.exports = {
   name: "roll",

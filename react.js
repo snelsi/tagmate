@@ -1,4 +1,4 @@
-const { getRandomNumber } = require("./helpers.js");
+const getRandomNumber = require("lodash/random");
 
 const boobaEmoji = "808653159630241792";
 const monkaChristEmoji = "570861366777348108";
