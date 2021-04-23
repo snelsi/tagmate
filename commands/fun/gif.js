@@ -27,7 +27,7 @@ module.exports = {
 
         const url = gif.url;
 
-        return message.reply(url);
+        return message.channel.send(url);
       } catch (e) {
         console.error(e);
         message.reply("An error occurred, sorry");
