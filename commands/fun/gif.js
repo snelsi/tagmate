@@ -21,14 +21,11 @@ module.exports = {
       if (err || !body) return message.reply(err || "An error occurred, sorry");
 
       try {
-        const gif = sample(sample(body.results).media);
+        const gif = sample(body.results);
 
         if (!gif) return message.reply("No gifs found 😢");
 
-        console.clear();
-        console.log(gif);
-
-        const url = gif.tinygif?.url || gif.mediumgif?.url || gif.gif.url;
+        const url = gif.url;
 
         return message.reply(url);
       } catch (e) {
